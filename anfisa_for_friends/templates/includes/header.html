@@ -1,17 +1,34 @@
 {% load static %}
 <header>
   <img src="{% static 'img/logo.png' %}" height="50" alt="">
-  <nav>
-    <ul>
-      <li>
-        <a href="{% url 'homepage:index' %}">Главная</a>  
-      </li>
-      <li>
-        <a href="{% url 'ice_cream:ice_cream_list' %}">Каталог мороженого</a>       
-      </li>
-      <li>
-        <a href="{% url 'about:description' %}">О проекте</a>
-      </li>
-    </ul>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+    <div class="container">
+      <div 
+        class="navbar-toggler" 
+        type="button" 
+        data-toggle="collapse" 
+        data-target="#navbarNav" 
+        aria-controls="navbarNav" 
+        aria-expanded="false" 
+        aria-label="Toggle navigation"
+        >
+        <span class="navbar-toggler-icon"></span>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarNav">                      
+        <ul class="nav nav-pills">
+          {% include "includes/nav_item.html" with name="Главная" url="homepage:index" %}
+          {% include "includes/nav_item.html" with name="Каталог мороженого" url="ice_cream:ice_cream_list" %}
+          {% include "includes/nav_item.html" with name="О проекте" url="about:description" %}
+        </ul>
+      </div>
+      <a class="navbar-brand" href="{% url 'homepage:index' %}">
+        <img 
+          src="{% static 'img/logo.png' %}"
+          height="50" 
+          class="d-inline-block align-top"
+          alt=""
+          >            
+      </a>  
+    </div>
   </nav>
 </header>
